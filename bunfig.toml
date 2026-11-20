@@ -1,0 +1,21 @@
+# Copied from aadhar.sh's install policy: isolated node_modules, and nothing
+# published in the last 24 hours (bun counts seconds).
+[install]
+linker = "isolated"
+minimumReleaseAge = 86400
+exact = true
+
+# The fixture suite under fixtures/ is input to the tests, not part of them.
+[test]
+root = "conformance"
+
+[fmt]
+printWidth = 160
+quoteProps = "preserve"
+ignorePatterns = ["**/*.md", "**/*.json", "**/bun.lock"]
+
+[lint]
+reportUnusedDisableDirectives = "error"
+
+[lint.categories]
+correctness = "error"

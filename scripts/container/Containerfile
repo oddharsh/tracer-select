@@ -1,0 +1,6 @@
+# Linux with strace, git, node and bun: the trace half needs ptrace, which
+# macOS doesn't offer without turning SIP off.
+FROM node:24-slim
+RUN apt-get update && apt-get install -y --no-install-recommends strace git ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN npm install -g bun@1.4.4 && bun --version
+RUN git config --global user.email trace@example.invalid && git config --global user.name trace && git config --global init.defaultBranch main && git config --global --add safe.directory '*'

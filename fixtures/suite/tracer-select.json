@@ -1,0 +1,4 @@
+{
+  "command": ["bun", "test"],
+  "tests": ["tests/**/*.test.mjs"]
+}

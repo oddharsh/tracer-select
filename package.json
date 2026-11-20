@@ -1,0 +1,32 @@
+{
+  "name": "tracer-select",
+  "version": "0.0.0",
+  "description": "Run only the test files a change can reach, judged by the files each one opened under strace. Any runner.",
+  "type": "module",
+  "license": "MIT",
+  "private": true,
+  "bin": {
+    "tracer-select": "./src/cli.ts"
+  },
+  "exports": {
+    "./select": "./src/select.ts",
+    "./trace": "./src/trace.ts",
+    "./config": "./src/config.ts"
+  },
+  "engines": {
+    "bun": ">=1.4.0"
+  },
+  "scripts": {
+    "test": "bun test",
+    "lint": "bun lint --type-aware",
+    "format": "bun fmt",
+    "format:check": "bun fmt --check",
+    "typecheck": "bun check",
+    "check:fast": "bun run --parallel lint typecheck test format:check",
+    "test:linux": "sh scripts/linux.sh bun test",
+    "control": "sh scripts/linux.sh sh scripts/control.sh"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4"
+  }
+}
